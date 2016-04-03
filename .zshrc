@@ -127,6 +127,7 @@ undelfile(){
 trash(){
     mv $@ ~/.trash/
 }
+#sed 's/ *$//g;' .zsh_history | sed '/^.\{1,4\}$/d' | sed '/^g[nlabcdusfp]\{1,5\} .*/d' | sed '/^git [nr] /d' | sed '/^rm /d' | sed '/^cgnb /d' | sed '/^touch /d' > back_history
 #alias rm="mv $@ ~/.Trash/" this sentence can not be in effect, why?
 # 删除dock无用图标
 #defaults write com.apple.dock static-only -boolean true; killall Dock
