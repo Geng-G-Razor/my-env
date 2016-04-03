@@ -1,0 +1,8 @@
+Bundle "Shougo/unite.vim"
+Bundle "Shougo/neomru.vim"
+Bundle "digitaltoad/vim-jade"
+Bundle "rizzatti/dash.vim"
+Bundle "Shougo/vimshell.vim"
+Bundle "Shougo/vimproc.vim"
+Bundle "ervandew/supertab"
+Bundle "rking/ag.vim"

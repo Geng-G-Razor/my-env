@@ -1,0 +1,200 @@
+nnoremap <esc> :noh<cr>zz
+let g:airline_theme = 'tomorrow'
+set guifont=monaco:h12
+set guioptions=egm
+set autoread
+set autowriteall
+    " 在浏览器预览 for Mac
+    function! ViewInBrowser(name)
+        let file = expand("%:p")
+        let l:browsers = {
+            \"cr":"open -a \"Google Chrome\"",
+            \"ff":"open -a Firefox",
+            \"fe":"open -a FirefoxDeveloperEdition",
+            \"co":"open -a \"Visual Studio Code\"",
+            \"ec":"open -a \"/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.14/Emacs.app\""
+        \}
+        let htdocs='/Users/leon1/'
+        let strpos = stridx(file, substitute(htdocs, '\\\\', '\', "g"))
+        let file = '"'. file . '"'
+        exec ":update " .file
+        "echo file .' ## '. htdocs
+        if strpos == -1
+            exec ":silent ! ". l:browsers[a:name] ." file://". file
+        else
+            let file=substitute(file, htdocs, "http://127.0.0.1:8090/", "g")
+            let file=substitute(file, '\\', '/', "g")
+            exec ":silent ! ". l:browsers[a:name] file
+        endif
+    endfunction
+    nmap <Leader>cr :call ViewInBrowser("cr")<cr>
+    nmap <Leader>ff :call ViewInBrowser("ff")<cr>
+    nmap <Leader>fe :call ViewInBrowser("fe")<cr>
+    nmap <Leader>co :call ViewInBrowser("co")<cr>
+    nmap <Leader>ce :call ViewInBrowser("ec")<cr>
+
+nnoremap ' `
+nnoremap ` '
+nnoremap U <c-r>
+nnoremap <space> :
+"inoremap <c-c> <esc> <c-c>
+nnoremap <c-l> :Unite -start-insert file file_rec buffer file_mru<cr>
+nnoremap <BS>  :Unite -start-insert file file_rec buffer file_mru<cr>
+nnoremap <leader>ua :UniteBookmarkAdd<cr>
+nnoremap <leader>ub :Unite bookmark<cr>
+nnoremap <leader>sm :source ~/.vimrc.local<cr>
+nnoremap <leader>em :vsplit ~/.vimrc.local<cr>
+"nnoremap <c-;> :unite line<cr>
+"augroup type-javascript
+    "autocmd!
+    "autocmd FileType javascript inoremap <buffer> <space>= <space>=<space>
+    "autocmd FileType javascript inoremap <buffer> <space>+ <space>+<space>
+    "autocmd FileType javascript inoremap <buffer> <space>3 <space>===<space>
+    "autocmd FileType javascript inoremap <buffer> <space>1 <space>+=<space>
+    "autocmd FileType javascript inoremap <buffer> <space>2 <space>-=<space>
+    "autocmd FileType javascript inoremap <buffer> <space>- <space>-<space>
+    "autocmd FileType javascript inoremap <buffer> <space>? <space>?<space>
+    "autocmd FileType javascript inoremap <buffer> ? <space>?<space>
+    "autocmd FileType javascript inoremap <buffer> : <space>:<space>
+"augroup end
+autocmd BufNewFile,BufRead *.jade set filetype=pug
+augroup type-pug
+    autocmd!
+    autocmd FileType pug set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+    "autocmd Filetype jade set foldmethod=indent
+augroup end
+
+inoremap <C-e> <end>
+inoremap <C-a> <home>
+inoremap <C-b> <left>
+cnoremap <C-b> <left>
+inoremap <C-f> <right>
+cnoremap <C-f> <right>
+set cursorcolumn
+set cursorline
+set mouse-=a
+set t_ti= t_te=
+set relativenumber number
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
+"autocmd InsertEnter * :set norelativenumber number
+"autocmd InsertLeave * :set relativenumber number
+function! NumberToggle()
+    if(&relativenumber==1)
+        set norelativenumber number
+    else
+        set relativenumber
+    endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
+autocmd! bufwritepost _vimrc source %
+autocmd! bufwritepost .vimrc source %
+noremap <F1> <Esc>
+function! HideNumber()
+    if(&relativenumber==&number)
+        set relativenumber! number!
+    elseif(&number)
+        set number!
+    else
+        set relativenumber!
+    endif
+    set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
+nnoremap <F3> :set list! list?<CR>
+nnoremap <F4> :set wrap! wrap?<CR>
+set pastetoggle=<F5>
+nnoremap <F6> :exec exists('stntax_on')?'syn off':'syn on'<CR>
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
+noremap H ^
+noremap L $
+nnoremap ; :
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+"nnoremap # *
+"nnoremap * #
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap <LEFT> :bprevious<CR>
+nnoremap <RIGHT> :bnext<CR>
+nnoremap <leader>th :tabfirst<cr>
+nnoremap <leader>tl :tablast<cr>
+nnoremap <leader>tj :tabnext<cr>
+nnoremap <leader>tk :tabprev<cr>
+nnoremap <C-n> :tabnext<cr>
+nnoremap <C-p> :tabprev<cr>
+nnoremap <leader>tn :tabnext<cr>
+nnoremap <leader>tp :tabprev<cr>
+noremap <leader>1 1gt
+nnoremap <D-1> 1gt
+inoremap <D-1> <C-c>1gt
+nnoremap <leader>2 2gt
+noremap <D-2> 2gt
+inoremap <D-2> <C-c>2gt
+nnoremap <leader>3 3gt
+noremap <D-3> 3gt
+inoremap <D-3> <C-c>3gt
+nnoremap <leader>4 4gt
+noremap <D-4> 4gt
+inoremap <D-4> <C-c>4gt
+nnoremap <leader>5 5gt
+noremap <D-5> 5gt
+inoremap <D-5> <C-c>5gt
+noremap <leader>6 6gt
+nnoremap <D-6> 6gt
+inoremap <D-6> <C-c>6gt
+noremap <leader>7 7gt
+nnoremap <D-7> 7gt
+inoremap <D-7> <C-c>7gt
+noremap <leader>8 8gt
+nnoremap <D-8> 8gt
+inoremap <D-8> <C-c>8gt
+noremap <leader>9 9gt
+nnoremap <D-9> 9gt
+inoremap <D-9> <C-c>9gt
+noremap <leader>0 :tablast<cr>
+nnoremap <D-0> :tablast<cr>
+inoremap <D-0> <C-c>:tablast<cr>
+vnoremap < <gv
+vnoremap > >gv
+map Y y$
+map <leader>sa ggVG
+nnoremap <leader>v V`}
+cmap w!! w !sudo tee >/dev/null %
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>w :w<cr>
+nmap <silent> <leader>ev :vsplit $MYVIMRC<cr>
+nmap <silent> <leader>sv :so $MYVIMRC<cr>
+"if has("autocmd")
+    "if v:version > 701
+        "autocmd Syntax * call matchadd('Todo','\W\zs\(TODO\FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
+        "autocmd Syntax * call macthadd('Deug','\W\zs(NOTE\|INFO\|IDEA\|NOTICE\)')
+    "endif
+"endif
+
+
+
+
+
+
+
+
+
+
+
+
+

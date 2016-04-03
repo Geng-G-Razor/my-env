@@ -1,0 +1,158 @@
+"3.9 (created: 2015/02/15 15:49:05)
+
+command! -nargs=* dict tabopen http://dict.youdao.com/search?q=<args>&keyfrom=dict.plugin
+command! -nargs=* gs tabopen https://www.google.com/search?source=launchy&q=<args>
+command! -nargs=* gsb tabopen http://www.baidu.com/s?wd=<args>
+command! noimg set! permissions.default.image=2
+command! nojs set! javascript.enabled=false
+command! ysimg set! permissions.default.image=1
+command! ysjs set! javascript.enabled=true
+" highlight CmdLine>* font-family: Microsoft YaHei;
+highlight hints display:block;
+highlight CompItem font-size: 10pt;
+highlight CompItem[selected] background: #58FA58; box-shadow: 0px 0px 1px #CC0;
+highlight CompMsg color: red; font-size: 10pt; margin-left: 16px;
+highlight CompTitle background: #D8D8D8
+highlight CompTitle>* color: black; font-size: 12pt; font-weight: blod;
+highlight ErrorMsg color: white; background: red; font-weight: bold; font-size: 12pt;
+highlight Hint  font-size: 14px; color: #f30;width:30px; z-index:2147483647;height:14px;padding-bottom:5px;border-radius:6px;text-align:center;background:-moz-linear-gradient(left center 30deg,#3ff,#ff3,#ffc,#cfc,#fff,#9f0,#0f0,#cf0) repeat scroll 0% 0%;
+highlight HintElem background:transparent;
+highlight HintImage background:transparent;
+highlight HintActive border-radius:5px;background:-moz-linear-gradient(left center 30deg, rgb(170, 204, 238), rgb(85, 136, 153), rgb(170, 34, 136), rgb(34, 170, 170), rgb(255, 153, 102)) repeat scroll 0% 0%;color: white;
+highlight Hint::after content: attr(number); z-index:2147483647;
+highlight InfoMsg color: magenta; background: white; font-size: 12pt;
+highlight ModeMsg color: white; background: blue; border-radius: 1px; padding: 0px 5px;
+highlight MoreMsg color: green; background: #D8D8D8; font-size: 12pt;
+highlight Normal color: black; background: white; font-size: 10pt; opacity: 0.9;
+highlight StatusLine color: gray; background: transparent; font-weight: 600; font-size: 12pt; 
+highlight Title color: white; background: red; font-weight: bold; font-size: 12pt; 
+highlight WarningMsg color: red; background: white; font-size: 12pt;
+set hintchars=123457890
+set gui='nonavigation'
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-l> <Right>
+map B :exe<Space>":gsb<Space>"+content.getSelection()<Return>
+map S :exe<Space>":gs<Space>"+content.getSelection()<Return>
+map w :dict<Space>
+map W :exe<Space>":dict<Space>"+content.getSelection()<Return>
+nmap ,ni :noimg
+nmap ,nj :nojs
+nmap ,yi :ysimg
+nmap ,yj :ysjs
+nmap <silent> <A-3> :js<Space>toggle_bottombar()<Return>
+nmap s :stop<Return>
+nmap <A-1> :set<Space>gui=invmenu<Return>
+nmap <A-2> :set<Space>gui=invbookmarks<Return>
+nmap <A-5> :set<Space>gui=invtabs<Return>
+nmap ,a i<C-S-A>
+nmap ,b :dialog<Space>customizetoolbar<Return>
+nmap ,c :dialog<Space>cleardata<Return>
+nmap ,d :dialog<Space>downloads<Return>
+nmap ,e :pref!<Return>
+nmap ,h :history<Space><Return>
+nmap ,r :restart<Return>
+nmap ,q :qall<Return>
+nmap ,p :pref<Return>
+nmap ,x :xall<Return>
+nmap ,s :source<Space>/Users/RazorGG/.vimperatorrc<Return>
+nmap ,f Bookmarks<Space>Toolbar-HINTS<Space>(current-tab)
+nmap ,F Bookmarks<Space>Toolbar-HINTS<Space>(new-tab)
+nmap ,es :set<Space>encoding=Shift_JIS<Return>
+nmap ,ec :set<Space>encoding=EUC-JP<Return>
+nmap ,eu :set<Space>encoding=UTF-8<Return>
+nmap ,eg :set<Space>encoding=GB2312<Return>
+nmap ,ie :js<Space>io.run("c:\\program<Space>files\\internet<Space>explorer\\iexplore.exe",<Space>[buffer.URL])<Return>
+nmap ,vsp <C-S-F12>
+nmap <C-S-F> :multihints<Space>follow<Return>
+nmap <C-A-j> :tabmove<Space>+1<Return>
+nmap <C-A-k> :tabmove<Space>-1<Return>
+nmap ,g :set<Space>gui=invnavigation<Return>
+nmap ,otb ohttps://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm<Return>
+nmap ,ojd owww.jd.com<Return>
+nmap ,ozh owww.zhihu.com<Return>
+nmap ,opt ohttps://getpocket.com/a/queue/<Return>
+nmap ,ttb thttps://buyertrade.taobao.com/trade/itemlist/list_bought_items.htm<Return>
+nmap ,tjd twww.jd.com<Return>
+nmap ,tzh twww.zhihu.com<Return>
+nmap ,tpt thttps://getpocket.com/a/queue/<Return>
+nmap ,ort ohttps://www.rescuetime.com/dashboard<Return>
+nmap ,trt thttps://www.rescuetime.com/dashboard<Return>
+nmap ,owb ohttp://www.52wubi.com/uploads/userup/52wubi.swf<Return>
+nmap ,twb thttp://www.52wubi.com/uploads/userup/52wubi.swf<Return>
+nnoremap ,oww ohttp://www.52wubi.com/<Return>
+nnoremap ,tww thttp://www.52wubi.com/<Return>
+nnoremap j 10j
+nnoremap k 10k
+"nnoremap n <C-p>
+"nnoremap m <C-n>
+nnoremap <lt> g0
+nnoremap > g$
+nnoremap p P
+nnoremap P p
+nnoremap y Y
+nnoremap Y y
+nnoremap h gT
+nnoremap l gt
+nnoremap H h
+nnoremap L l
+nnnoremap ; :
+nnoremap gp :javascript<Space>window.RIL.addCurrent();alert('Succeed!');<Return>
+noremap ,ez :o<Space>javascript:(function(){%20document.location.href='http://translate.<Space>google.com.hk/translate?hl=zh-CN&sl=en&tl=zh-CN&u='+escape(document.location<Space>.href)%20})();<Return>
+noremap U :undo<Space>
+noremap ]- :se<Space>um<Return>
+noremap ]= :se<Space>noum<Return>
+noremap zd :echo<Space>new<Space>Date()<Return>
+noremap z1 :hi<Space>Hint::after<Space>-append<Space>font-size:<Space>10pt;<Return>
+noremap z2 :hi<Space>Hint::after<Space>-append<Space>font-size:<Space>14pt;<Return>
+noremap z3 :hi<Space>Hint::after<Space>-append<Space>font-size:<Space>18pt;<Return>
+noremap D :tabonly<Return>
+noremap e :js<Space>__readable_by_evernote.readable_by_evernote__menu__call(buffer.URL)<Return>
+set complete=slbS
+set editor='/usr/local/bin/mvim -f +"sil! call cursor(0, <column>)" <file>'
+set editor='/Applications/Textastic'
+set focuscontent
+set maxitems=12
+set "nextpattern=(下|后)一?(页|页|篇|章|张|个)|次のページ|次へ,^\\bnext\\b,\\bnext\\b,\\bsuivant\\b,^(>|›)$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b"
+set "previouspattern=(上|前)一?(页|页|篇|章|张|个)|前のページ|前へ,^\\bprev|previous\\b,\\bprev|previous\\b,\\bprécédent\\b,^(<|‹)$,^(<<|«)$,^(<|«),(<|«)$"
+set noscrollbars
+set titlestring=Mozillafirefox
+set "urlseparator=\\s((?!http://)[\\s\\S])*(?=(https?|ftp)://)|(((?!http://)\\S)*[^u\\s]rce:|((?!http://)\\S)*[^r\\s]ce:|((?!http://)\\S)*[^c\\s]e:|((?!http://)\\S)*[^e\\s]:|((?!http://)\\S)*[^:\\s])(?=(https?|ftp)://)|\\s{5,}((?!http://)\\S)+((?!http://)[\\s\\S])*$|(\\s((?!http://)\\S)+((?!http://)[\\s\\S])*\\n|\\n((?!http://)[\\s\\S])*((?!http://)\\S)+)((?!http://)[\\s\\S])*$"
+source! /Users/RazorGG/.vimperatorrc.local
+
+"javascript to hide statusbar
+noremap <ESC> <ESC>:js toggle_bottombar()<CR>
+"nnoremap <ESC> <ESC>:js toggle_bottombar('off')<CR>
+"nnoremap <CR> <CR>:js toggle_bottombar('on')<CR>
+noremap : :js toggle_bottombar('on')<CR>:
+noremap o :js toggle_bottombar('on')<CR>o
+noremap O :js toggle_bottombar('on')<CR>O
+noremap t :js toggle_bottombar('on')<CR>t
+noremap T :js toggle_bottombar('on')<CR>T
+noremap / :js toggle_bottombar('on')<CR>/
+cnoremap <CR> <CR>:js toggle_bottombar('off')<CR>
+cnoremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
+
+:js << EOF
+function toggle_bottombar(p) {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    if (p == 'on'){
+        bb.style.height = '';
+        bb.style.overflow = '';
+        return;
+    }
+    if (p == 'off'){
+        bb.style.height = '0px';
+        bb.style.overflow = 'hidden';
+        return;
+    }
+    bb.style.height = (bb.style.height == '') ? '0px' : '';
+    bb.style.overflow = (bb.style.height == '') ? '' : 'hidden';
+}
+toggle_bottombar();
+EOF
+
+" vim: set ft=vimperator:
