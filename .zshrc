@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z cp colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting extract)
+plugins=(git z cp github git-extras python brew osx zsh-syntax-highlighting extract common-aliases sudo brew node npm web-search)
 # Add env.sh
 #. ~/Projects/config/env.sh
 
@@ -94,7 +94,6 @@ source $ZSH/oh-my-zsh.sh
 # alias rglg="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias rgtt="sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText 'To Be A Better Man \
     Pracitice Make perfect!  \n NOW \n To Find A Girl Friend'"
-eval "$(thefuck --alias)"
 alias fire="open -a /Applications/FirefoxDeveloperEdition.app"
 alias code="open -a ~/Applications/Visual\ Studio\ Code.app"
 alias space="open -a /Applications/Emacs.app"
@@ -108,10 +107,10 @@ alias kalei="open -a /Applications/Kaleidoscope.app"
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 export PATH="/usr/local/sbin:$PATH"
 #export PATH=$PATH:~/workspace/project/tomcat8/bin
-#alias npm="npm --registry=https://registry.npm.taobao.org \
-#--cache=$HOME/.npm/.cache/cnpm \
-#--disturl=https://npm.taobao.org/dist \
-#--userconfig=$HOME/.cnpmrc"
+alias npm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
 #alias nnpm="npm"
 #alias mvim="open -a macvim"
 alias vim="mvim -v"
