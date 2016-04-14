@@ -6,6 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+#ZSH_THEME="aussiegeek"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +50,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z cp github git-extras python brew osx zsh-syntax-highlighting extract common-aliases sudo brew node npm web-search)
+plugins=(git z cp github git-extras python brew osx zsh-syntax-highlighting extract common-aliases sudo brew node npm web-search catimg encode64 urltools zsh_reload)
 # Add env.sh
 #. ~/Projects/config/env.sh
 
@@ -129,9 +130,9 @@ trash(){
 #sed 's/ *$//g;' .zsh_history | sed '/^.\{1,4\}$/d' | sed '/^g[nlabcdusfp]\{1,5\} .*/d' | sed '/^git [nr] /d' | sed '/^rm /d' | sed '/^cgnb /d' | sed '/^touch /d' > back_history
 #alias rm="mv $@ ~/.Trash/" this sentence can not be in effect, why?
 # 删除dock无用图标
-#defaults write com.apple.dock static-only -boolean true; killall Dock
-#defaults write com.apple.dock springboard-rows -int 7 
-#defaults write com.apple.dock springboard-columns -int 6
+#defaults write com.apple.dock static-only -boolean true;
+#defaults write com.apple.dock springboard-rows -int 7; 
+#defaults write com.apple.dock springboard-columns -int 6;
 #defaults write com.apple.dock ResetLaunchPad -bool TRUE;killall Dock
 alias hardseed='hardseed --saveas-path ~/downloads --topics-range 8 64 --timeout-download-picture 32 --proxy socks5://127.0.0.1:1080 --av-class aicheng_asia_non_mosaicked'
 alias pc4='proxychains4 -q -f /usr/local/Cellar/proxychains-ng/4.11/etc/proxychains.conf'
